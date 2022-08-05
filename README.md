@@ -22,31 +22,32 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## 基本介绍
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- 基于[Nest](https://github.com/nestjs/nest) 框架的个人练习
+- 参考： [b站：小满](https://www.bilibili.com/video/BV1NG41187Bs?spm_id_from=333.337.search-card.all.click&vd_source=0408eda4b3ffa2cfed228f05fa0d4b42)
 
-## Installation
 
+## 安装
 ```bash
 $ npm install
+或者
+$ yarn install
 ```
 
-## Running the app
-
+## 运行
 ```bash
 # development
 $ npm run start
 
-# watch mode
+# 热更新选这个
 $ npm run start:dev
 
 # production mode
 $ npm run start:prod
 ```
 
-## Test
-
+## 测试
 ```bash
 # unit tests
 $ npm run test
@@ -59,15 +60,12 @@ $ npm run test:cov
 ```
 
 ## Support
-
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
 ## Stay in touch
-
 - Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
 - Website - [https://nestjs.com](https://nestjs.com/)
 - Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
-
 Nest is [MIT licensed](LICENSE).
