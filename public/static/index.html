@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="paramInsert"></div>
+    <div id="queryInsert"></div>
+    <script>
+      var paramInsertDiv = document.getElementById("paramInsert")
+      var queryInsertDiv = document.getElementById("queryInsert")
+      // 发送一个axios请求，对应person接口里的get请求(param形式)
+      async function urlParam() {
+        const res = await axios.get('/api/person/1');
+        console.log(res, '---get');
+        // insertDiv.append(document.createElement('div').innerHTML = `${res.data}`);
+        paramInsertDiv.innerHTML = `<div>${res.data}</div>`
+      }
+
+      // 通过params指定对应参数，axios做url encode，最终传递的数据会体现在url上（query形式）
+      async function query() {
+          const res = await axios.get('/api/person/find', {
+              params: {
+                  name: 'yuiyake_杯',
+                  age: 900
+              }
+          });
+          // insertDiv.append(document.createElement('p').textContent = res.data);
+          queryInsertDiv.innerHTML = `<div>${res.data}</div>`
+          console.log(res, '---find');
+      }
+
+      query();
+      urlParam();
+    </script>
+  </body>
+</html>
