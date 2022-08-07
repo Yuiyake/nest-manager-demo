@@ -3,12 +3,12 @@ import {
   Get,
   Post,
   Body,
-  Patch,
+  Put,
   Param,
   Delete,
   Query,
 } from '@nestjs/common';
-import { PersonService, PostsRo } from './person.service';
+import { PersonService, PersonRo } from './person.service';
 import { CreatePersonDto } from './dto/create-person.dto';
 import { UpdatePersonDto } from './dto/update-person.dto';
 
@@ -17,13 +17,13 @@ export class PersonController {
   constructor(private readonly personService: PersonService) {}
 
   @Post()
-  create(@Body() createPersonDto: CreatePersonDto) {
-    return this.personService.create(createPersonDto);
+  create(@Body() post) {
+    return this.personService.create(post);
   }
 
   @Get()
-  findAll() {
-    return this.personService.findAll();
+  findAll(@Query() query): Promise<PersonRo> {
+    return this.personService.findAll(query);
   }
 
   // query形式数据接口（跟在url里?后面那一串）
@@ -37,13 +37,18 @@ export class PersonController {
     return this.personService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePersonDto: UpdatePersonDto) {
-    return this.personService.update(+id, updatePersonDto);
+  @Get(':id')
+  async findById(@Param('id') id) {
+    return await this.personService.findById(id);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.personService.remove(+id);
+  @Put(':id')
+  async update(@Param('id') id, @Body() post) {
+    return await this.personService.updateById(id, post);
+  }
+
+  @Delete('id')
+  remove(@Param('id') id) {
+    return this.personService.remove(id);
   }
 }

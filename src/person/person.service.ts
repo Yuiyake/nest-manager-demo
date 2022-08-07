@@ -67,12 +67,4 @@ export class PersonService {
   queryOne(name: string, age: number) {
     return `query参数  name:${name}, age:${age}`;
   }
-
-  update(id: number, updatePersonDto: UpdatePersonDto) {
-    return `This action updates a #${id} person`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} person`;
-  }
 }
