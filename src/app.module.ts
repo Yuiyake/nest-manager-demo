@@ -2,9 +2,33 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PersonModule } from './person/person.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigService, ConfigModule } from '@nestjs/config';
+import envConfig from '../config/env';
 
 @Module({
-  imports: [PersonModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true, // 设为全局
+      envFilePath: [envConfig.path],
+    }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => ({
+        type: 'mysql',
+        entites: [],
+        host: configService.get('DB_HOST', 'localhost'),
+        port: configService.get<number>('DB_ROOT', 3306),
+        username: configService.get('DB_USER', 'root'),
+        password: configService.get('DB_PASSWORD', '123456'),
+        database: configService.get('DB_DATABASE', 'nest_db'),
+        timezone: '+08:00',
+        synchronize: false,
+      }),
+    }),
+    PersonModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
