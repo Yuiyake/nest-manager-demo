@@ -60,11 +60,11 @@ export class PersonService {
     return await this.personRepository.remove(existPost);
   }
 
-  findOne(id: number) {
-    return `param参数  ${id}`;
-  }
+  // findOne(id: number) {
+  //   return `param参数  ${id}`;
+  // }
 
-  queryOne(name: string, age: number) {
-    return `query参数  name:${name}, age:${age}`;
-  }
+  // queryOne(name: string, age: number) {
+  //   return `query参数  name:${name}, age:${age}`;
+  // }
 }
