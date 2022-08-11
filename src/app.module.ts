@@ -27,7 +27,7 @@ import envConfig from '../config/env';
         password: configService.get('DB_PASSWORD', '123456'),
         database: configService.get('DB_DATABASE', 'nest_db'),
         timezone: '+08:00',
-        synchronize: true,
+        synchronize: false,
       }),
     }),
     PersonModule,

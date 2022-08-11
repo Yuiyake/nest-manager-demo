@@ -22,7 +22,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
   // 注册全局错误的过滤器
-  app.useGlobalFilters(new HttpExceptionFilter());
+  // app.useGlobalFilters(new HttpExceptionFilter());
   // 全局注册拦截器
   app.useGlobalInterceptors(new TransformInterceptor());
   // 添加resful版本控制
@@ -34,6 +34,6 @@ async function bootstrap() {
   // 设置管道验证
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3030);
-  console.log('启动成功! http://localhost:3030/api/');
+  console.log('启动成功! http://localhost:3030/docs');
 }
 bootstrap();

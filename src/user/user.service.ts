@@ -24,4 +24,24 @@ export class UserService {
     const newUser = await this.userRepository.create(createUser);
     return await this.userRepository.save(newUser); // 相当于new User(createUser)创建了一个新的用户对象
   }
+
+  findAll() {
+    return `This action returns all user`;
+  }
+
+  async findOne(id: string): Promise<UserEntity> {
+    return await this.userRepository.findOne(id);
+  }
+
+  // update(id: number, updateUserDto: UpdateUserDto) {
+  //   return `This action updates a #${id} user`;
+  // }
+
+  remove(id: number) {
+    return `This action removes a #${id} user`;
+  }
+
+  // comparePassword(password, libPassword) {
+  //   return compareSync(password, libPassword);
+  // }
 }

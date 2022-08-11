@@ -1,6 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import { ApiProperty } from '@nestjs/swagger';
+import { Exclude } from 'class-transformer';
 
 @Entity('user')
 export class UserEntity {
@@ -15,6 +16,7 @@ export class UserEntity {
   nickname: string; //昵称
 
   @Column()
+  @Exclude() // 用exclude做反序列化，过滤掉password。
   password: string; // 密码
 
   @Column()
