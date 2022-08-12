@@ -8,6 +8,7 @@ import { PersonEntity } from './person/entities/person.entity';
 import { UserEntity } from './user/entities/user.entity';
 import { UserModule } from './user/user.module';
 import envConfig from '../config/env';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import envConfig from '../config/env';
     }),
     PersonModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
