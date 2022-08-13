@@ -25,8 +25,9 @@ export class UserService {
     return await this.userRepository.save(newUser); // 相当于new User(createUser)创建了一个新的用户对象
   }
 
-  findAll() {
-    return `This action returns all user`;
+  async findAll() {
+    // return `This action returns all user`;
+    return await this.userRepository.find();
   }
 
   async findOne(id: string): Promise<UserEntity> {

@@ -31,16 +31,18 @@ export class UserController {
     return this.userService.register(createUser);
   }
 
-  @Get()
-  findAll() {
-    return 'get findAll';
-  }
+  // @Get()
+  // findAll() {
+  //   return 'get findAll';
+  // }
 
   @ApiOperation({ summary: '获取用户信息' })
   @ApiBearerAuth() // swagger文档设置token
   @UseGuards(AuthGuard('jwt'))
+  @UseInterceptors(ClassSerializerInterceptor)
   @Get()
   getUserInfo(@Req() req) {
+    // console.log(req);
     return req.user;
   }
 

@@ -5,6 +5,7 @@ import { HttpExceptionFilter } from './core/filter/http-exception.filter';
 import { TransformInterceptor } from './core/interceptor/transform.interceptor';
 import { AppModule } from './app.module';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
+import { LoggerMiddleware } from './middleware/logger.middleware';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -24,6 +25,8 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   // 设置管道验证
   app.useGlobalPipes(new ValidationPipe());
+  // 监听所有请求路由，并打印日志
+  // app.use(LoggerMiddleware);
   // 设置swagger文档
   const config = new DocumentBuilder()
     .setTitle('管理后台')

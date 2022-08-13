@@ -13,15 +13,15 @@ import { ApiTags } from '@nestjs/swagger';
 import { AppService } from './app.service';
 import { LoginDto } from './auth/dto/login.dto';
 
-@ApiTags('本地验证')
-@Controller('auth')
-// @Controller('app')
+// @ApiTags('本地验证')
+// @Controller('auth')
+@Controller('app')
 export class AppController {
-  @UseGuards(AuthGuard('local'))
-  @UseInterceptors(ClassSerializerInterceptor)
-  @Post('login')
-  async login(@Body() user: LoginDto, @Req() req) {
-    return req.user;
-  }
-  // constructor(private readonly appService: AppService) {}
+  // @UseGuards(AuthGuard('local'))
+  // @UseInterceptors(ClassSerializerInterceptor)
+  // @Post('login')
+  // async login(@Body() user: LoginDto, @Req() req) {
+  //   return req.user;
+  // }
+  constructor(private readonly appService: AppService) {}
 }

@@ -4,7 +4,8 @@ import { UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { InjectRepository } from '@nestjs/typeorm';
 import { StrategyOptions, ExtractJwt } from 'passport-jwt';
-import { Strategy } from 'passport-local';
+// import { Strategy } from 'passport-local';
+import { Strategy } from 'passport-jwt';
 import { Repository } from 'typeorm';
 import { UserEntity } from 'src/user/entities/user.entity';
 
